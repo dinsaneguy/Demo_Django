@@ -8,7 +8,9 @@ def land(request):
     return render(request,"index.html")
 
 def login(request):
-    return render(request,"index.html")
+    return render(request,"login.html")
+
+    
 
 def signup(request):
     if request.method == "POST":
@@ -19,8 +21,6 @@ def signup(request):
             passwd = form.cleaned_data['upwd']
             pass_rpt = form.cleaned_data['upwd_repeat']
             theuser = Users.objects.create(username=name, email=mail, password=passwd)
-
-
             theuser.save()
             return render(request,"login.html")
     form = User_form()
